@@ -1,0 +1,111 @@
+#parent{
+  overflow: hidden;
+}
+/* The navigation bar */
+.navbar {
+  overflow: hidden;
+  /*padding: 0px/* 60px;*/
+  font-size: 25px;
+  font-family: Helvetica; /*Arial, Helvetica, sans-serif;*/
+  background-color: #333;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+.navbar a.active {
+  background: #bae1ff;
+  color: black;
+}
+
+.sidebar {
+  /*height: 100%;*/
+  font-family: Helvetica;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 70px;
+  bottom: 100px;
+  left: 10px;
+  background-color: #ffffff;
+  /*overflow-x: hidden;*/
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background: #fff;
+  overflow: hidden;
+  padding: 8px 0;
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #818181;
+  display: block;
+}
+
+
+/* Style links on mouse-over */
+.sidebar a:hover {
+  color: #444444;
+}
+.sidebar p.bold {
+  font-weight: bold;
+  font-size: 20px;
+  color: #111111;
+}
+
+.sidebar p.small {
+  /*font-weight: bold;*/
+  font-size: 15px;
+  color: #111111;
+}
+.sidebar a {
+  font-weight: bold;
+  /*color: #fb3f00;*/
+  color: #777777;
+  text-decoration: none;
+}
+
+.sidebar p.link {
+   color: #fb3f00;
+   text-decoration: none;
+}
+/* Main content */
+.main {
+ /* margin-top: 300px;  Add a top margin to avoid content overlay */
+  /* top right bottom left*/
+  margin: 100px 70px 150px 190px;
+  overflow: hidden;
+}
+
+.rounded {
+  border-radius: 50%;
+}
+
+
+.bottombar {
+  overflow: hidden;
+  background-color: #f7f7f7;/*#c0c5ce;*/
+  position: fixed; /* Set the navbar to fixed position */
+  bottom: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  padding: 0px 10px 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
