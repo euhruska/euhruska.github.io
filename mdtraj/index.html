@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>MDsrv</title>
+  <meta name="description" content="MDsrv - a web-based tool developed to provide easy and quick on-line access to molecular dynamics (MD) simulations, channeling MD trajectories through a web server using a powerful web application (NGL viewer) to visualize them." />
+  <meta name="keywords" content="MDsrv, MD simulation, visualization, web server, NGL" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <!-- modernizr enables HTML5 elements and feature detects -->
+  <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+  <script src="js/jquery.js"></script>
+  <script> 
+  $(function(){
+    $("#header").load("include/header.html");
+    $("#side").load("include/side.html"); 
+    $("#footer").load("include/footer.html"); 
+  });
+  </script> 
+</head>
+
+<body>
+      <script src="data/ngl.js"></script>
+    <script>
+      document.addEventListener( "DOMContentLoaded", function() {
+      function getModelURL( model ){
+            var href = window.location.href;
+            return href.substr( 0, href.lastIndexOf( "/" ) + 1 ) + model;
+      }
+            var stage = new NGL.Stage( "viewport1" );
+                stage.setParameters( { backgroundColor: "white" } );
+            var trajComp;
+            var player;
+            stage.loadFile( getModelURL("data/md.gro"), { asTrajectory: true }  ).then( function( o ){
+                o.addRepresentation( "cartoon", {color: "#c40000"});
+                o.autoView();
+            trajComp = o.addTrajectory();
+            player = new NGL.TrajectoryPlayer(trajComp.trajectory, {start: 1, timeout: 200} );
+            player.play();
+            } );
+        } );
+    </script>
+    <script>
+        document.addEventListener( "DOMContentLoaded", function(){
+            stage = new NGL.Stage( "viewport" );
+            stage.loadFile( "data/md.gro", { defaultRepresentation: true, asTrajectory: true } ).then( function( comp ){
+              comp.setName( "simulation-name" );
+              comp.setSelection( "protein and not _h" );
+              comp.addRepresentation( "licorice", {visible: false} );
+              trajComp = comp.addTrajectory( );
+            player = new NGL.TrajectoryPlayer(trajComp.trajectory, {start: 1, timeout: 200} );
+            player.play();
+
+          } );
+            var toggleTheme = document.getElementById( "toggleTheme" );
+            var isLight = true;
+            toggleTheme.addEventListener( "click", function(){
+            if( !isLight ){
+                    stage.setParameters( { backgroundColor: "white" } );
+                    isLight = true;
+                }else{
+                    stage.setParameters( { backgroundColor: "black" } );
+                    isLight = false;
+                }
+            } );
+            var toggleSpin = document.getElementById( "toggleSpin" );
+            var isSpinning = true;
+            toggleSpin.addEventListener( "click", function(){
+                if( !isSpinning ){
+                    stage.setSpin( [ 0, 1, 0 ], 0.01 );
+                    isSpinning = true;
+                }else{
+                    stage.setSpin( null, null );
+                    isSpinning = false;
+                }
+            } );
+            var toggleLicorice = document.getElementById( "toggleLicorice" );
+            toggleLicorice.addEventListener( "click", function(){
+              stage.getRepresentationsByName( "licorice" ).list.forEach( function( repre ){
+                  repre.setVisibility( !repre.visible );
+              } );
+            } );
+            var toggleRunMDs = document.getElementById( "toggleRunMDs" );
+            var isRunning = false;
+            toggleRunMDs.addEventListener( "click", function(){
+        var trajComp = stage.getComponentsByName("simulation-name").list[0].trajList[0];
+        var player = new NGL.TrajectoryPlayer(trajComp.trajectory, {timeout: 200});
+        if( !isRunning ){
+          player.play();
+          isRunning = true;
+        }else{
+            player.play();
+          player.pause();
+          isRunning = false;
+        }
+            } );
+        } );
+    </script>
+
+
+    <div id="viewport" style="width:250px; height:250px; margin:0 auto;"></div>
+      <div style="width:200px; margin:0 auto;">
+        <button id="toggleSpin">spin on/off</button>
+        <button id="toggleTheme">light/dark background</button>
+        <button id="toggleLicorice">side-chains on/off</button>
+        <button id="toggleRunMDs">run/pause MD</button>
+    </div>
+<br><br>
+<ul><li>
+  <p align=justify><strong>Published simulation embedded next to the reference: <a target="_blank" href="http://proteinformatics.charite.de/MDsrv-embedded-example1">embedded link #1</a></strong>.</p>
+</li><li>
+  <p align=justify><strong>Simulation within a wiki-like article: <a target="_blank" href="http://proteinformatics.charite.de/MDsrv-embedded-example2">embedded link #2</a></strong></p>
+</li><li>
+  <p align=justify><strong>Comparison of several simulations with different membrane composition: <a target="_blank" href="http://proteinformatics.charite.de/MDsrv-embedded-example3">embedded link #3</a></strong></p>
+</li></ul>
+<br>
+<br>
+<h3><a id="example_1" class="anchor" href="#example_1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Simulation sessions served by MDsrv using the NGL GUI </h3>
+<p align=justify>You want to have <strong>more features</strong> to present the simulation (e.g. other representations, animation settings or trajectory processing)? By providing a simulation session served MDsrv using the <strong>NGL GUI</strong>, a <strong>manifold collection of options</strong> for visualization is available by default, offering  greater flexibility and more features. <strong>Try out</strong> some of the prepared sessions below yourself:</p>
+<ul><li>
+  <p align=justify><strong>Simulation of Rhodopsin with Gt peptide (3PQR): <a target="_blank" href="http://proteinformatics.charite.de/MDsrv-example1">link #1</a></strong><br>200ns simulation of G-protein alpha-5 subunit peptide of transducin bound to active Opsin.</p>
+</li><li>
+  <p align=justify><strong>Spontaneous binding of cholesterol into A<sub>2A</sub> receptor: <a target="_blank" href="http://proteinformatics.charite.de/MDsrv-example2">link #2</a></strong><br>Spontaneous binding of membrane cholesterol into A<sub>2A</sub> receptor. The simulation is deposed at the Hildebrand lab by using the MDsrv.</p>
+</li><li>
+  <p align=justify><strong>Coarse-Grained simulation of Bace1 helices: <a target="_blank" href="http://proteinformatics.charite.de/MDsrv-example3">link #3</a></strong><br>Self-assembly of three Bace1 transmembrane helices and a DPPC lipid bilayer.</p>
+</li><li>
+  <p align=justify><strong>Simulation of a GPCR in complex with its G protein: <a target="_blank" href="http://proteinformatics.charite.de/MDsrv-example4">link #4</a></strong><br>200ns of &beta;2AR in complex with Gs-empty protein.</p>
+</li><li>
+  <p align=justify><strong>Coarse-Grained simulation of GPCR dimer: <a target="_blank" href="http://proteinformatics.charite.de/MDsrv-example5">link #5</a></strong><br>Steer CG-MD simulation of GPCR dimer dissociation.</p>
+</li><li>
+  <p align=justify><strong>Simulation of a GPCR dimers in poly-lipid membranes: <a target="_blank" href="http://proteinformatics.charite.de/MDsrv-example6">link #6</a></strong><br>PUFA-mediated GPCR oligomerization (Guixà-González et al. Sci. Rep. 2016 6:19839).</p>
+</li></ul>
+<p align=justify>For information <strong>how to use the NGL GUI</strong>, e.g. to add simulation, change representations and adjust the playing settings, consult the <a target="_blank" href="viewing.html">"viewing simulation" documentation</a>. Additionally, all script files used to generated the sessions can be downloaded <a target="_blank" href="download.html">here</a> and is in general further explained <a target="_blank" href="scripting.html">here</a>.</p>
+
+<br>
+<h3><a id="example_2" class="anchor" href="#example_2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MDsrv used on other websites</h3>
+<p align=justify><strong>GPCRmd:</strong> The <a target="_blank" href="http://www.gpcrmd.org/">GPCRmd</a> is a consortium with the goal to establish a web platform including a database to allow storage of MD data, basic analysis of deposited MD trajectories (e.g. RMSD, ligand-receptor interaction, receptor dynamics) with the special focus on G-protein coupled receptors. It uses the MDsrv for on-line visualization and handling.</p>
+      </div>
+    </div>
+    <div id="scroll">
+      <a title="Scroll to the top" class="top" href="#"><img src="images/top.png" alt="top" /></a>
+    </div>
+  <div id="footer"></div>
+  </div>
+</body>
+</html>

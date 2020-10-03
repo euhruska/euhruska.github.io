@@ -113,71 +113,103 @@ h1 {
 
 /* Main content */
 
-.main {
-  /* margin-top: 300px;  Add a top margin to avoid content overlay */
-  /* top right bottom left*/
-  margin: 4em 1em 4em 12em;
-  font-size: 1em;
-}
+
 
 .rounded {
   border-radius: 50%;
 }
 
 .resi {
+
   height: auto;
   max-width: 100%;
 }
+.resi2 {
+    width:600px;
+    height: 600px;
 
-.bottombar {
-  overflow: hidden;
-  background-color: #f7f7f7;
-  /*#c0c5ce;*/
-  position: fixed;
-  /* Set the navbar to fixed position */
-  bottom: 0;
-  /* Position the navbar at the top of the page */
-  width: 100%;
-  /* Full width */
-  padding: 0em 0.5em 0em 0.5em;
+}
+.resi3 {
+    width:30vw;
+    height:30vw;
+    margin: 0 0 0 0;
+}
+.resi4 {
+    width:30vw;
+    height:30vw;
+      margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+}
+.resi5 {
+    width:20em;
+    height:20em;
+      margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+}
+.resi6 {  
+  width:250px; height:250px; margin:0 auto;
+}
+
+.cent{
+  display: block;
   text-align: center;
 }
-
-@media all and (max-height: 750px) {
-  .sidebar {
-    padding-top: 0.5em;
-    position: static;
-    overflow: visible;
-    /*background-color: #333333;*/
-    /*float:left;*/
-  }
-  .main {
-    top: 0em;
-    /*width: 100%-13em;*/
-    /*z-index: 1;*/
-  }
+.cent2{
+  display: block;
+  text-align: center;
+  margin: 0 0 0 0;
 }
 
-@media all and (max-width: 500px) {
-  .sidebar {
-    padding-top: 4em;
-    position: static;
-    overflow: visible;
-  }
-  .main {
-    top: 0em;
-    /*background-color: #333333;*/
-    float: left;
-    width: auto;
-    margin: 0em 1em 3em 1em;
-  }
+
+.main {
+  /* margin-top: 300px;  Add a top margin to avoid content overlay */
+  /* top right bottom left*/
+  margin: 4em 1em 4em 12em;
+  font-size: 1em;
 }
-@media all and (max-width: 400px) {
-  .sidebar {
-    padding-top: 7em;
-    }}
     
-@media all and (max-width: 220px) {
+.sidebar {
+  /*height: 100%;*/
+  font-family: Helvetica;
+  width: 10em;
+  position: fixed;
+  /*z-index: 1;*/;
+  background-color: #ffffff;
+  /*overflow-x: hidden;*/
+  padding-top: 0.5em;
+  padding-left: 1em;
+  padding-bottom: 1em;
+  background: #fff;
+  overflow: hidden;
+  padding-right: 1em;
+  text-decoration: none;
+  font-size: 1em;
+  color: #818181;
+  float: left;
+  /*display: block;*/
+}
+
+@media only screen and (max-width: 750px) {
+
+.resi4 {
+    width:40vw;
+    height: 40vw;
+}
+  }
+@media only screen and (max-width: 558px) {
+
   .sidebar {
-    padding-top: 10em;
-    }}
+    padding-top: 2em;
+    position: static;
+    overflow: visible;
+  }
+  .main {
+    margin: 7em 1em 4em 12em;
+  font-size: 1em;
+}
+  }
+
+
+

@@ -2,21 +2,179 @@
 <html>
 
   <head>
-    <meta name="author" content="Eugen Hruska">
-    <meta name="verify-v1" content="zoUtUrbHhSc83/jIypZS0+KjoWEnlHcIpTuy4btYb/Q=">
     <title>Eugen Hruska</title>
+    <meta name="author" content="Eugen Hruska">
+    <meta name="description" content="Eugen Hruska Homepage" />
+    <meta name="keywords" content="Eugen Hruska, protein, folding, Homepage, Website, MD simulation, resume" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="verify-v1" content="zoUtUrbHhSc83/jIypZS0+KjoWEnlHcIpTuy4btYb/Q=">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="icon" href="images/favicon.ico" />
+    <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$', '$']]},
+            messageStyle: "none"
+        });
+    </script>
+    <script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101224058);</script>
+    <script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1594547,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+<script async src="//static.getclicky.com/js"></script>
+
+         <script src="data/ngl.js"></script>
+   
+    <script>
+        document.addEventListener( "DOMContentLoaded", function(){
+            stage2 = new NGL.Stage( "viewport2" );
+
+            stage2.loadFile( "data/2a3d.pdb", { defaultRepresentation: true, asTrajectory: true } ).then( function( comp2 ){
+              comp2.setName( "simulation-name2" );
+              comp2.setSelection( "protein and not _h" );
+              comp2.addRepresentation( "licorice", {visible: false} );
+              comp2.setPosition([-50, 0, -10]);
+              comp2.setScale(1.5);
+              trajComp2 = comp2.addTrajectory( );
+            player2 = new NGL.TrajectoryPlayer(trajComp2.trajectory, {start: 1, timeout: 200} );
+            stage2.getRepresentationsByName( "licorice" ).list.forEach( function( repre ){
+                  repre.setVisibility( !repre.visible );
+              } );
+            
+             
+
+          } );
+          stage2.setParameters( { backgroundColor: "white" } );
+          stage2.setSpin( [ 0, 1, 0 ], 0.01 );
+
+
+              var toggleLicorice2 = document.getElementById( "toggleLicorice2" );
+            toggleLicorice2.addEventListener( "click", function(){
+              stage2.getRepresentationsByName( "licorice" ).list.forEach( function( repre2 ){
+                  repre2.setVisibility( !repre2.visible );
+              } );
+            } );
+
+            var toggleSpin = document.getElementById( "toggleSpin2" );
+            var isSpinning = true;
+            toggleSpin.addEventListener( "click", function(){
+                if( !isSpinning ){
+                    stage2.setSpin( [ 0, 1, 0 ], 0.01 );
+                    isSpinning = true;
+                }else{
+                    stage2.setSpin( null, null );
+                    isSpinning = false;
+                }
+            } );
+
+        } );
+    </script>
+          <script>
+        document.addEventListener( "DOMContentLoaded", function(){
+            stage3 = new NGL.Stage( "viewport3" );
+
+            stage3.loadFile( "data/a3dtraj.gro", { defaultRepresentation: true, asTrajectory: true } ).then( function( comp3 ){
+              comp3.setName( "simulation-name" );
+              comp3.setSelection( "protein" );
+              comp3.addRepresentation( "licorice", {visible: true} );
+              comp3.setPosition([0, -10, 0]);
+              trajComp3 = comp3.addTrajectory( );
+              player3 = new NGL.TrajectoryPlayer(trajComp3.trajectory, {start: 1, timeout: 500} );
+              player3.play();
+            });
+            stage3.setParameters( { backgroundColor: "white" } );
+         
+            var toggleLicorice = document.getElementById( "toggleLicorice3" );
+            toggleLicorice.addEventListener( "click", function(){
+              stage3.getRepresentationsByName( "licorice" ).list.forEach( function( repre ){
+                  repre.setVisibility( !repre.visible );
+              } );
+            } );
+           
+
+            var toggleRunMDs3 = document.getElementById( "toggleRunMDs3" );
+            var isRunning = true;
+
+            toggleRunMDs3.addEventListener( "click", function(){
+              if( !isRunning ){
+                player3.play();
+                isRunning = true;
+              }else{
+                  
+                player3.pause();
+                isRunning = false;
+              }
+                  } );
+              } );
+        
+    </script>
+
+      
+    <script>
+        document.addEventListener( "DOMContentLoaded", function(){
+            stage4 = new NGL.Stage( "viewport4" );
+
+            stage4.loadFile( "data/ntl9.pdb", { defaultRepresentation: true, asTrajectory: true } ).then( function( comp4 ){
+              comp4.setName( "simulation-name4" );
+              comp4.addRepresentation( "ball+stick",{sele: "protein and not _h",aspectRatio: 10.});
+              comp4.addRepresentation( "line", {sele:"all AND water"} );
+              comp4.setPosition([-25, -25, -25]);
+              comp4.setScale(0.75);
+              
+ 
+          } );
+          stage4.setParameters( { backgroundColor: "white" } );
+          stage4.setSpin( [ 0, 1, 0 ], 0.01 );
+
+
+            var toggleSpin = document.getElementById( "toggleSpin4" );
+            var isSpinning = true;
+            toggleSpin.addEventListener( "click", function(){
+                if( !isSpinning ){
+                    stage4.setSpin( [ 0, 1, 0 ], 0.01 );
+                    isSpinning = true;
+                }else{
+                    stage4.setSpin( null, null );
+                    isSpinning = false;
+                }
+            } );
+
+        } );
+    </script> 
+  <!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://rice.matomo.cloud/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src='//cdn.matomo.cloud/rice.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+  
   </head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="SHORTCUT ICON" href="images/EHs.png">
-  <link rel="stylesheet" href="styles.css">
 
-  <body>
-
+<body>
 
     <div class="navbar">
-      <a href="index.html" class="active">Research</a>
-      <a href="papers.html">Papers</a>
-      <a href="competitions.html">Competitions</a>
+      <a href="index.html" class="active">About me</a>
+      <a href="awards.html">Awards</a>
+      <a href="abstracts.html">Abstracts</a>
+      <a href="https://drive.google.com/file/d/1SAjIJWFeAhascsZTejipWkHBBvd1q7ML/view?usp=sharing"> <i class="fa fa-file-word-o"></i> CV</a>
     </div>
 
     <div class="sidebar">
@@ -25,36 +183,45 @@
       <p class="bold"> <h1>Eugen Hruska</h1></p>
       <p class="small">Physics PhD
         <span>Computational Biophysics, Machine learning, Data Science, Deep learning</span></p>
-      <p><a href="https://ctbp.rice.edu/people/graduate-students"> <i class="fa fa-institution"></i> &nbsp;Rice University</a></p>
-      <p><a href="https://www.google.com/maps/place/Rice+University/@36.6957916,-105.458713,4.43z/data=!4m5!3m4!1s0x8640c064b7f18e1f:0xe2cd9cf065c43eb5!8m2!3d29.7173941!4d-95.4018312">&nbsp;<i class="fa fa-map-marker"></i> &nbsp;&nbsp;Houston, TX</a></p>
-      <p><a href="images/HruskaResume.pdf"> <i class="fa fa-file-word-o"></i>  &nbsp; CV</a></p>
+      <p><a href="https://scholar.google.com/citations?user=Rq6m2UIAAAAJ"> <i class="fa fa-mortar-board"></i>&nbsp;Google Scholar</a></p>
       <p><a href="https://github.com/euhruska"> <i class="fa fa-lg fa-github"></i>  &nbsp;Github</a></p>
       <p><a href="https://www.linkedin.com/in/eugen-hruska/"> <i class="fa fa-lg fa-linkedin"></i> &nbsp;LinkedIn</a></p>
-      <p><a href="https://scholar.google.com/citations?user=Rq6m2UIAAAAJ"> <i class="fa fa-mortar-board"></i>&nbsp;Google Scholar</a></p>
-      <p><a href="https://medium.com/@eugenhruska"> <i class="fa fa-commenting"></i>&nbsp;Blog</a></p>
-      <p><a href="mailto:euhruska@gmail com"> <i class="fa fa-envelope"></i>&nbsp;&nbsp;Contact</a></p>
+      <p><a href="https://twitter.com/HruskaEugen"> <i class="fa fa-fw fa-twitter"></i>&nbsp;Twitter</a></p>
+      <p><a href="https://ctbp.rice.edu/people/graduate-students"> <i class="fa fa-institution"></i> &nbsp;Rice University</a></p>
+      <p><a href="https://www.google.com/maps/place/Rice+University/@36.6957916,-105.458713,4.43z/data=!4m5!3m4!1s0x8640c064b7f18e1f:0xe2cd9cf065c43eb5!8m2!3d29.7173941!4d-95.4018312">&nbsp;<i class="fa fa-map-marker"></i> &nbsp;&nbsp;Houston, TX</a></p>
     </div>
 
-
-    <div class="main">
-      <p>
-        Proteins are significant both from a theoretical and practical point of view. On one side, proteins are involved in most biological processes, such as enzymatic catalysis, photosynthesis, and diseases. A fast and cheap method to determine how proteins
-        behave would help in many applications. The current experimental methods are both slow and expensive. Unfortunately, have trouble to determine the properties of proteins.
-        <br><br> From a theoretical point of view, proteins are a challenge too. Proteins can have too many different possible shapes. This doesn't allow to predict the behavior of protein in a simple way. Only recently have powerful computers like Anton
-        allowed to fold small proteins by brute force approach. Brute force means that the protein is simulated exactly as it is in the real world. The achieve reasonable accuracy it takes months or years to simulate milliseconds of protein behavior.
-        Below in the figure is the size of some of the largest proteins which could be folded on a computer, with around a millisecond simulation time. Most proteins don't fold in this short time since they are larger. Only for fast-folding proteins,
-        the whole protein behavior can be simulated. Simulating protein behavior on this short timescales not only improved our understanding of proteins and biology but allowed to improve the design of new drugs. Still, most biological processes have
-        longer timescales and are out of reach with these methods. More about my research into new methods to reach longer timescales in the Papers section.
-      </p>
-      <figure align="center">
-        <img src="images/all_fast_folding_proteins.jpg" alt="anton" width="600" class="resi">
-        <!--<img src="https://plchldr.co/i/600x530" alt="plchldr.co" class="resi">-->
-        <p> <small> Results from Anton supercomputer, folding of several small proteins. How fast-folding proteins fold, Shaw et al., Science, 2011 </small></p>
+      <div class="main">
+              <figure align="center" class="cent2">
+        <div id="viewport2"  class="resi4"></div>
+        <div id="viewport3"  class="resi4"></div>
+<p> <small> Drag the protein around to see details. Left: Protein A3D is one of the proteins investigated in my work. Only protein backbone shown.  PDB: 2A3D <button id="toggleLicorice2">side-chains on/off</button><button id="toggleSpin2">spin on/off</button> Right: A3D trajectory <button id="toggleLicorice3">side-chains on/off</button>
+        <button id="toggleRunMDs3">run/pause MD</button></small></p>
       </figure>
-      <!--<h1><a name="top">Science Competitions</a></h1>-->
+     <h1>About me</h1>
+      <p>
+
+      I am a physicist, solving challenging problems in biophysics.
+
+      Currently, I am a PhD student at Rice University at CTBP in <a href="http://clementiresearch.rice.edu/">Clementi lab</a>, which leverages Machine learning and Deep learning to solve scientific research problems around proteins and protein behavior. For example, my team has used machine learning and deep learning for adaptive sampling and coarse-graining proteins. Above and below are some of the proteins I'm working with. To see details of the protein pull on the visualization.
       </p>
+      <p>
+        My current research focuses on a massive challenge which slows down our ability to simulate biology on computers. The challenge is how to reach biological timescales. Many biological processes take fractions of a second, but even that is longer than what current computers can reach. Using classical molecular dynamics the maximum timestep is around 5 femtoseconds, where a femtosecond is 1/1,000,000,000,000,000 of a second. With current CPUs and GPUs or even custom hardware [D.E. Shaw et al., 2014] we can simulate a huge number of these tiny timesteps in a day. This means we can simulate around 100 microseconds/day for a tiny biological system. The challenge is clear, for most of the relevant biological systems we can't reach the millisecond of longer timescales we would require to investigate and understand the biology from simulations. The short timescales we can reach with simulations already allowed us understand some aspects of photosynthesis, immune system, Alzheimer's disease and many other biological challenges. 
+      </p>
+
+  
+           
+      
+
+
+    <figure align="center" class="cent2">
+        <div id="viewport4"  class="resi4"></div>
+<p> <small> NTL9 protein (center) in water box (red) with ions (green). <button id="toggleSpin4">spin on/off</button> </small></p>
+      </figure>
+
+
       <h2>Publications</h2>
-      longer description under <a href="papers.html">Section Papers</a>
+      
       <p>
        [1] Extensible and Scalable Adaptive Sampling on Supercomputers. E. Hruska et al., 2019, <a href="https://arxiv.org/abs/1907.06954">https://arxiv.org/abs/1907.06954</a>
        <br>
@@ -64,16 +231,63 @@ Chem. Phys. 2018, <a href="https://doi.org/10.1063/1.5053582">https://doi.org/10
        [3] ExTASY: Scalable and Flexible Coupling of MD Simulations and Advanced Sampling Techniques, V.
 Balasubramanian et al. including E. Hruska , 2017, Proceedings of the 2016 IEEE 12th International
 Conference on e-Science, e-Science, 361–370, <a href="https://doi.org/10.1109/eScience.2016.7870921">https://doi.org/10.1109/eScience.2016.7870921</a>
+
       </p>
-    </div>
 
-    <div class="bottombar">
-      <p>
-        © Eugen Hruska 2019</p>
-    </div>
+      <h1> Foundational research of adaptive Sampling</h1>
+ <p>
 
-  </body>
-  <script>
+In my paper [Hruska et al., 2018] titled “Quantitative Comparison of Adaptive Sampling Methods for Protein Dynamics,” I showed a systematic evaluation of selected adaptive sampling strategies. It allowed me to predict not only the speed up with adaptive sampling for a particular protein but also the scalability and the optimal adaptive sampling strategy for a particular protein and particular goal. The investigated 8 proteins in Figure 1 left are relatively fast-folding due to limited reference data. To obtain acceptable statistics I converted the reference trajectories into Markov State model. By generating Markov chains I could simulate adaptive sampling and compare different adaptive sampling strategies. The results in [Hruska et al., 2018] show that for protein folding macro-state based strategies like $1/C_{M,2}^{K}$ are the best choice from the investigated strategies. The macro-state strategy determines metastable regions and distribute new restarting points according to the statistics of different metastable regions, details in the paper. For general protein landscape exploration, micro-state based adaptive sampling strategies like $\frac{1}{C}$ are better.
+
+For the first time, I gave a theoretical upper limit for the speed up possible with adaptive sampling in Figure 1 left with the strategy $t_{opt}$. The maximum possible speed up increases for slower folding proteins, showing that for more complex proteins or larger transition barriers the adaptive sampling shows larger advantages. The scaling in Figure 1 right shows that all adaptive sampling strategies scale well parallelization. Only at parallelizations above 1000 the speed up plateaus.
+ </p>
+
+
+<figure align="center" class="cent">
+        <img src="images/Figure5a.png" alt="adaptive sampling scaling" width="600" class="resi">
+        <img src="images/Figure4a.png" alt="adaptive sampling scaling2" width="600" class="resi">
+        <p> left: Theoretical maximum speed up for individual proteins. The x-axis is folding time of the proteins. It shows a roughly linear increase of speed up with folding time. right: Scaling of the time to solution of folding the protein for 5 different strategies. Higher parallelization reduces the time to solution for all strategies. molecular dynamics is plain molecular dynamics. $t_{opt}$ and $p_{esc}$ are theoretical best strategies to explore the protein or fold the protein. $\frac{1}{C}$ and $1/C_{M,2}^{K}$ are two different adaptive sampling strategies.  Details in [Hruska et al., 2018]. </p>
+      </figure>
+<p>
+  There is an significant opportunity to improve the currently available adaptive sampling strategies. One challenge is how to increase the speed up reachable with adaptive sampling closer to the theoretical upper limit. Another challenge is developing adaptive sampling strategies which are optimized for different goals. Currently, only the exploration or the folding of the protein are optimized. Novel ways of extracting relevant information from raw data are of interest to develop new adaptive sampling strategies.
+</p>
+
+     <h1> Software development for adaptive sampling</h1>
+
+
+
+    <figure align="center" class="cent">
+            <img src="images/schema1.png" alt="extasy schema" width="600" class="resi">
+            <img src="images/extasy_arch_coarse.png" alt="entk schema" width="600" class="resi">
+            <p> Figure 2: left: The iterative execution steps in ExTASY framework. right: The software backed of ExTASY shown ensures at the same time great scaling performance and a simple frontend interface. The modular frontend of ExTASY allows to implement different complex workflows such as adaptive sampling in a easy maintainable way. Figures from [Hruska et al., 2019]. </p>
+          </figure>
+    <p>
+    The development of the ExTASY framework with collaborators is shown in two papers. The ExTASY (Extensible Toolkit for Advanced Sampling and analYsis) framework simplifies the execution of adaptive sampling on HPC since it's modular and python based. The first paper [Balasubramanian et al., 2016] titled “ExTASY: Scalable and Flexible Coupling of MD Simulations and Advanced Sampling Techniques” introduces the ExTASY framework. It showed that different sampling strategies can be easily executed with the same framework, by utilizing Python-based “templated scripts” that interface to an interoperable and high-performance pilot-based run time system. The easy setup for different HPC systems was shown on three different supercomputers: ARCHER, Blue Waters, and Stampede. ExTASY showed good scaling up to 1000s of molecular dynamics simulations. Figure 2 left shows the iterative workflow central to adaptive sampling. The analysis step automatically analyses the previously generated trajectories and determines protein conformations for starting new molecular dynamics trajectories in the next iteration. Figure 3 right shows that ExTASY's inherent modularity of the framework allows simplifying the complex workflow by encapsulating the complexity in different software layers. This allows to swap out the molecular dynamics packages or the particular sampling methods with little changes.
+    </p>
+
+
+    <figure align="center" class="cent">
+            <img src="images/plot_reana_52_1FME_cmicro_ds-free-energy-TICA2-overlap_mod4_2.png" alt="free energy landscape" width="600" class="resi">
+            <p> Figure 3: Adaptive sampling with ExTASY (black diagonal lines) explores the same areas of the protein folding landscape as plain molecular dynamics (colored background). This result shows that adaptive sampling reaches accurate results and explores the whole protein energy landscape [Hruska et al., 2019]. </p>
+          </figure>
+
+          <figure align="center" class="cent">
+            <img src="images/plot_reana_48_1FME_cmicro_ds_pop_fraction2_2_mod2.png" alt="adaptive sampling" width="600" class="resi">
+            <img src="images/plot_reana_48_CLN025_cmicro_ds_rel_ent_fold_4_mod2.png" alt="entk schema" width="600" class="resi">
+            <p> Figure 4: left: ExTASY explores the protein Villin about one magnitude faster than reference plain molecular dynamics simulations. right: Adaptive sampling (red) is an order of magnitude faster to reach the same accuracy of protein dynamics than plain molecular dynamics (blue). The protein dynamics accuracy is measured by relative entropy between the reference data and the simulated data. Figures from [Hruska et al., 2019] </p>
+          </figure>
+
+
+    <p>
+      The second paper [Hruska et al., 2019] titled “Extensible and Scalable Adaptive Sampling on Supercomputers” shows on the example of three small, but realistic, proteins the advantages of the ExTASY framework. Figure 4 shows that the protein energy landscape and the protein dynamics were accurately recovered. The black diagonal lines representing the areas explored by ExTASY match the reference results shown in color. The adaptive sampling started with an unfolded state and was able to find the folded state shown. The speed up to explore the protein is shown in Figure 4 left. The red line shows the adaptive sampling is about one order faster than the plain molecular dynamics reference. To compare the accuracy of the protein dynamics the Markov state model relative entropy between the adaptive sampling data and the reference data is shown in Figure 4 right. A description of Markov state model relative entropy is in [Hruska et al., 2019]. The same protein dynamics accuracy is reached with adaptive sampling about one order faster.
+    </p>
+
+    </div>
+ 
+
+ 
+
+<script>
     (function(i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r;
       i[r] = i[r] || function() {
@@ -88,7 +302,14 @@ Conference on e-Science, e-Science, 361–370, <a href="https://doi.org/10.1109/
 
     ga('create', 'UA-76710605-1', 'auto');
     ga('send', 'pageview');
-
+    
   </script>
+      <script>
+$(window).load(function(){
+    $("html,body").scrollTop(0);
+});
+    </script> 
+  </body>
+
 
 </html>
