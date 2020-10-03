@@ -1,11 +1,11 @@
 body {
-  margin: 0px;
+  margin: auto;
   padding: 0px;
-  margin-left: 0px;
+  /*margin-left: 0px;*/
   padding-left: 0px;
   padding-top: 0px;
-  left: 0px;
-  /*overflow: hidden;*/
+  /*left: 0px;*/
+    /*overflow: hidden;*/
 }
 
 /* The navigation bar */
@@ -41,6 +41,7 @@ body {
 .navbar a:hover {
   background: #ddd;
   color: black;
+
 }
 
 h1 {
@@ -54,31 +55,12 @@ h1 {
   color: black;
 }
 
-.sidebar {
-  /*height: 100%;*/
-  font-family: Helvetica;
-  width: 10em;
-  position: fixed;
-  /*z-index: 1;*/;
-  background-color: #ffffff;
-  /*overflow-x: hidden;*/
-  padding-top: 0.5em;
-  padding-left: 1em;
-  padding-bottom: 1em;
-  background: #fff;
-  overflow: hidden;
-  padding-right: 1em;
-  text-decoration: none;
-  font-size: 1em;
-  color: #818181;
-  float: left;
-  /*display: block;*/
-}
 
 /* Style links on mouse-over */
 
 .sidebar a:hover {
   color: #444444;
+  font-size: 1em
 }
 
 .sidebar p.bold {
@@ -110,15 +92,24 @@ h1 {
   color: #fb3f00;
   text-decoration: none;
 }
-
+#lin a.link {
+  color: #fb3f00;
+  text-decoration: none;
+}
 /* Main content */
 
 
+.top-buffer { margin-top: 40px; }
+.year { margin-top: 30px; margin-bottom: 10px; }
+.bottom-buffer { margin-bottom: 40px; }
+
+#pubs lili { margin: 15px 0px; }
 
 .rounded {
   border-radius: 50%;
 }
 
+#ref{}
 .resi {
 
   height: auto;
@@ -166,19 +157,16 @@ h1 {
 .main {
   /* margin-top: 300px;  Add a top margin to avoid content overlay */
   /* top right bottom left*/
-  margin: 4em 1em 4em 12em;
+  
   font-size: 1em;
 }
     
 .sidebar {
   /*height: 100%;*/
   font-family: Helvetica;
-  width: 10em;
-  position: fixed;
   /*z-index: 1;*/;
   background-color: #ffffff;
   /*overflow-x: hidden;*/
-  padding-top: 0.5em;
   padding-left: 1em;
   padding-bottom: 1em;
   background: #fff;
@@ -187,9 +175,11 @@ h1 {
   text-decoration: none;
   font-size: 1em;
   color: #818181;
-  float: left;
+  /*line-height: 1.2em;*/
+  
   /*display: block;*/
 }
+
 
 @media only screen and (max-width: 750px) {
 
@@ -198,18 +188,121 @@ h1 {
     height: 40vw;
 }
   }
-@media only screen and (max-width: 558px) {
+@media (min-width: 559px) and (max-width: 750px) {
 
   .sidebar {
-    padding-top: 2em;
-    position: static;
+    padding-top: 4em;
+    /*max-width: 12em;*/
+    width:50%;
+    padding-left: 25%;
     overflow: visible;
+    text-align: center;
+    margin: auto;
+    display: inline-block;
+    justify-content: center;
   }
-  .main {
-    margin: 7em 1em 4em 12em;
-  font-size: 1em;
+   .main{
+    margin: 1em 1em 4em 1em;
+   }
+#portrait {
+          width: 12em;
+        }
+        #rm {
+  display: none;
+}
+#rmmain {
+  padding-top: 2em;
+}
+  }
+
+@media (max-width: 559px){
+
+  .sidebar {
+    padding-top: 8em;
+    
+    overflow: visible;
+    text-align: center;
+    margin: auto;
+    display: inline-block;
+  }
+   .main{
+    margin: 4em 1em 4em 1em;
+   }
+#portrait {
+          width: 12em;
+        }
+        #rm {
+  display: none;
+}
+#rmmain {
+  padding-top: 3em;
 }
   }
 
 
 
+@media (min-width: 750px) {
+
+  .sidebar {
+    padding-top: 0.5em;
+    overflow: visible;
+    position: fixed;
+    width: 10em;
+  }
+  .main{
+    margin: 4em 1em 4em 12em;
+  }
+
+#portrait {
+          width: 100%;
+        }
+  }
+
+
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+.timespan {
+    grid-column: span 1;
+    font-size: 1em;
+    width: 6em;
+    text-align: right;
+    padding-right: 0.5em;
+    color: #bbb;
+}
+.ico {
+    grid-column: span 1;
+    vertical-align: top;
+    border-left: 2px solid #cfcfcf;
+    position: relative;
+    z-index: -1;
+
+}
+.ico img {
+    border-radius: 5px;
+    /*width: 100%;*/
+    max-width: 6em;
+    margin-left: 10px;
+}
+.desc {
+    grid-column: span 10;
+    vertical-align: top;
+    font-size: 17px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+.entry {
+}
+.entry-dot {
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    left: -8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 7px;
+    background-color: #cfcfcf;
+    border: 2px solid white;
+}
