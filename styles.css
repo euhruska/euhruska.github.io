@@ -13,7 +13,7 @@ body {
 .navbar {
   overflow: hidden;
   /*padding: 0px/* 60px;*/
-  font-size: 1.5em;
+  font-size: 2.5em;
   font-family: Helvetica;
   /*Arial, Helvetica, sans-serif;*/
   background-color: #333;
@@ -60,7 +60,7 @@ h1 {
 
 .sidebar a:hover {
   color: #444444;
-  font-size: 1em
+  font-size: 1.4em
 }
 
 .sidebar p.bold {
@@ -109,7 +109,6 @@ h1 {
   border-radius: 50%;
 }
 
-#ref{}
 .resi {
 
   height: auto;
@@ -171,7 +170,7 @@ h1 {
   overflow: hidden;
   padding-right: 1em;
   text-decoration: none;
-  font-size: 1em;
+  font-size: 1.4em;
   color: #818181;
   /*line-height: 1.2em;*/
   
@@ -180,7 +179,7 @@ h1 {
 
 
 
-@media (min-width: 559px) and (max-width: 750px) {
+@media (min-width: 34em) and (max-width: 70em) {
 
   .sidebar {
     padding-top: 4em;
@@ -192,6 +191,36 @@ h1 {
     margin: auto;
     display: inline-block;
     justify-content: center;
+    margin-top: 4em;
+  }
+   .main{
+    margin: 1em 1em 1em 1em;
+   }
+#portrait {
+          width: 12em;
+        }
+        #rm {
+  display: none;
+}
+#rmmain {
+  padding-top: 4em;
+}
+.resi4 {
+    width:50em;
+    height: 50em;
+}
+  }
+
+@media (max-width: 34em){
+
+  .sidebar {
+    padding-top: 1em;
+    
+    overflow: visible;
+    text-align: center;
+    margin: auto;
+    display: inline-block;
+    margin-top: 8em;
   }
    .main{
     margin: 1em 1em 4em 1em;
@@ -203,63 +232,35 @@ h1 {
   display: none;
 }
 #rmmain {
-  padding-top: 2em;
-}
-.resi4 {
-    width:20vw;
-    height: 20vw;
-}
-  }
-
-@media (max-width: 559px){
-
-  .sidebar {
-    padding-top: 8em;
-    
-    overflow: visible;
-    text-align: center;
-    margin: auto;
-    display: inline-block;
-  }
-   .main{
-    margin: 4em 1em 4em 1em;
-   }
-#portrait {
-          width: 12em;
-        }
-        #rm {
-  display: none;
-}
-#rmmain {
   padding-top: 3em;
 }
 .resi4 {
-    width:30vw;
-    height: 30vw;
+    width:30em;
+    height: 30em;
 }
 
   }
 
 
 
-@media (min-width: 750px) {
+@media (min-width: 70em) {
 
   .sidebar {
-    padding-top: 0.5em;
+    padding-top: 1em;
     overflow: visible;
     position: fixed;
-    width: 10em;
+    width: 13em;
   }
   .main{
-    margin: 4em 1em 4em 12em;
+    margin: 7em 1em 4em 12em;
   }
 
 #portrait {
           width: 100%;
         }
 .resi4 {
-    width:50px;
-    height: 50px;
+    width:40em;
+    height: 40em;
 }
   }
 
@@ -295,11 +296,12 @@ h1 {
 .desc {
     grid-column: span 10;
     vertical-align: top;
-    font-size: 17px;
+    font-size: 1em;
     padding-left: 2px;
     padding-bottom: 20px;
 }
-.entry {
+.entry { 
+  font-size: 1.5em;
 }
 .entry-dot {
     position: absolute;
