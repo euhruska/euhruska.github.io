@@ -50,6 +50,52 @@
         g.type='text/javascript'; g.async=true; g.src='//cdn.matomo.cloud/euhruska.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
       })();
     </script>
+    <script src="data/ngl.js"></script>
+   
+    <script>
+        document.addEventListener( "DOMContentLoaded", function(){
+            stage2 = new NGL.Stage( "viewport2" );
+
+            stage2.loadFile( "data/2a3d.pdb", { defaultRepresentation: true, asTrajectory: true } ).then( function( comp2 ){
+              comp2.setName( "simulation-name2" );
+              comp2.setSelection( "protein and not _h" );
+              comp2.addRepresentation( "licorice", {visible: false} );
+              comp2.setPosition([-50, 0, -10]);
+              comp2.setScale(1.5);
+              trajComp2 = comp2.addTrajectory( );
+            player2 = new NGL.TrajectoryPlayer(trajComp2.trajectory, {start: 1, timeout: 200} );
+            stage2.getRepresentationsByName( "licorice" ).list.forEach( function( repre ){
+                  repre.setVisibility( !repre.visible );
+              } );
+            
+             
+
+          } );
+          stage2.setParameters( { backgroundColor: "white" } );
+          stage2.setSpin( [ 0, 1, 0 ], 0.01 );
+
+
+              var toggleLicorice2 = document.getElementById( "toggleLicorice2" );
+            toggleLicorice2.addEventListener( "click", function(){
+              stage2.getRepresentationsByName( "licorice" ).list.forEach( function( repre2 ){
+                  repre2.setVisibility( !repre2.visible );
+              } );
+            } );
+
+            var toggleSpin = document.getElementById( "toggleSpin2" );
+            var isSpinning = true;
+            toggleSpin.addEventListener( "click", function(){
+                if( !isSpinning ){
+                    stage2.setSpin( [ 0, 1, 0 ], 0.01 );
+                    isSpinning = true;
+                }else{
+                    stage2.setSpin( null, null );
+                    isSpinning = false;
+                }
+            } );
+
+        } );
+    </script>
   </head>
 
 <body>
@@ -77,6 +123,12 @@
     </div>
   
          <div class="main"  id="rmmain">
+          <h1> Visualization of a protein</h1>
+          <figure align="center" class="cent2">
+            <div id="viewport2"  class="resi4"></div>
+<p> <small> Drag the protein around to see details. Protein A3D is one of the proteins investigated in my work. PDB: 2A3D <button id="toggleLicorice2">side-chains on/off</button><button id="toggleSpin2">spin on/off</button>
+        </small></p>
+      </figure>
           <h1> Investigation of Adaptive Sampling of Proteins</h1>
  <p>
 

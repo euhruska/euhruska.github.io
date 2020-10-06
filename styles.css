@@ -126,8 +126,6 @@ h1 {
     margin: 0 0 0 0;
 }
 .resi4 {
-    width:30vw;
-    height:30vw;
       margin-left: auto;
   margin-right: auto;
   display: inline-block;
@@ -181,13 +179,7 @@ h1 {
 }
 
 
-@media only screen and (max-width: 750px) {
 
-.resi4 {
-    width:40vw;
-    height: 40vw;
-}
-  }
 @media (min-width: 559px) and (max-width: 750px) {
 
   .sidebar {
@@ -213,6 +205,10 @@ h1 {
 #rmmain {
   padding-top: 2em;
 }
+.resi4 {
+    width:20vw;
+    height: 20vw;
+}
   }
 
 @media (max-width: 559px){
@@ -237,6 +233,11 @@ h1 {
 #rmmain {
   padding-top: 3em;
 }
+.resi4 {
+    width:30vw;
+    height: 30vw;
+}
+
   }
 
 
@@ -256,6 +257,10 @@ h1 {
 #portrait {
           width: 100%;
         }
+.resi4 {
+    width:50px;
+    height: 50px;
+}
   }
 
 
