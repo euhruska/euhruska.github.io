@@ -52,7 +52,92 @@
     </script>
     <script src="data/ngl.js"></script>
    
-    <script>
+    
+  </head>
+
+<body>
+
+    <div class="navbar">
+      <a href="index.html" >About me</a>
+      <a href="papers.html">Papers</a>
+      <a href="research.html" class="active">Research</a>
+      <a href="awards.html">Awards</a>
+      <a href="cv.html"> <i class="fa fa-file-word-o"></i> CV</a>
+    </div>
+
+    <div class="sidebar" id="rm">
+      <!--<img src="https://plchldr.co/i/150x150" alt="plchldr.co" class="rounded">-->
+      <img id="portrait" src="assets/profile.jpg"  alt="profile" width="150" class="rounded">
+      <p class="bold"> <h1>Eugen Hruska</h1></p>
+      <p class="small"><b>Postdoctoral Fellow</b></p>
+        <p>Leveraging Physics and Machine Learning to understand the behavior of proteins</p>
+      <p><a href="https://scholar.google.com/citations?user=Rq6m2UIAAAAJ"> <i class="fa fa-mortar-board"></i>&nbsp;Google Scholar</a></p>
+      <p><a href="https://github.com/euhruska"> <i class="fa fa-lg fa-github"></i>  &nbsp;Github</a></p>
+      <p><a href="https://www.linkedin.com/in/eugen-hruska/"> <i class="fa fa-lg fa-linkedin"></i> &nbsp;LinkedIn</a></p>
+      <p><a href="https://twitter.com/HruskaEugen"> <i class="fa fa-fw fa-twitter"></i>&nbsp;Twitter</a></p>
+      <p><a href="https://flgroup.emorychem.science/people/"> <i class="fa fa-institution"></i> &nbsp;Emory University</a></p>
+      <p><a href="https://www.google.com/maps/place/Emory+University/@33.7971412,-84.324434,17z/data=!3m1!4b1!4m5!3m4!1s0x88f506f7808a4f1d:0x58d57a6237dd9c55!8m2!3d33.7971368!4d-84.32224">&nbsp;<i class="fa fa-map-marker"></i> &nbsp;&nbsp;Atlanta, GA</a></p>
+    </div>
+  
+         <div class="main"  id="rmmain">
+          <br>
+          
+          <h1> Investigation of Adaptive Sampling of Proteins</h1>
+ <p>
+
+In my paper [Hruska et al., 2018] titled “Quantitative Comparison of Adaptive Sampling Methods for Protein Dynamics,” I showed a systematic evaluation of selected adaptive sampling strategies. It allowed me to predict not only the speed up with adaptive sampling for a particular protein but also the scalability and the optimal adaptive sampling strategy for a particular protein and particular goal. The investigated 8 proteins in Figure 1 left are relatively fast-folding due to limited reference data. To obtain acceptable statistics I converted the reference trajectories into Markov State model. By generating Markov chains I could simulate adaptive sampling and compare different adaptive sampling strategies. The results in [Hruska et al., 2018] show that for protein folding macro-state based strategies like $1/C_{M,2}^{K}$ are the best choice from the investigated strategies. The macro-state strategy determines metastable regions and distribute new restarting points according to the statistics of different metastable regions, details in the paper. For general protein landscape exploration, micro-state based adaptive sampling strategies like $\frac{1}{C}$ are better.
+
+For the first time, I gave a theoretical upper limit for the speed up possible with adaptive sampling in Figure 1 left with the strategy $t_{opt}$. The maximum possible speed up increases for slower folding proteins, showing that for more complex proteins or larger transition barriers the adaptive sampling shows larger advantages. The scaling in Figure 1 right shows that all adaptive sampling strategies scale well parallelization. Only at parallelizations above 1000 the speed up plateaus.
+ </p>
+
+
+<figure align="center" class="cent">
+        <img src="assets/Figure5a.png" alt="adaptive sampling scaling" width="600" class="resi">
+        <img src="assets/Figure4a.png" alt="adaptive sampling scaling2" width="600" class="resi">
+        <p> Figure 1: left: Theoretical maximum speed up for individual proteins. The x-axis is folding time of the proteins. It shows a roughly linear increase of speed up with folding time. right: Scaling of the time to solution of folding the protein for 5 different strategies. Higher parallelization reduces the time to solution for all strategies. molecular dynamics is plain molecular dynamics. $t_{opt}$ and $p_{esc}$ are theoretical best strategies to explore the protein or fold the protein. $\frac{1}{C}$ and $1/C_{M,2}^{K}$ are two different adaptive sampling strategies.  Details in [Hruska et al., 2018]. </p>
+      </figure>
+<p>
+  There is an significant opportunity to improve the currently available adaptive sampling strategies. One challenge is how to increase the speed up reachable with adaptive sampling closer to the theoretical upper limit. Another challenge is developing adaptive sampling strategies which are optimized for different goals. Currently, only the exploration or the folding of the protein are optimized. Novel ways of extracting relevant information from raw data are of interest to develop new adaptive sampling strategies.
+</p>
+
+     <h1> Software development for adaptive sampling</h1>
+
+
+
+    <figure align="center" class="cent">
+            <img src="assets/schema1.png" alt="extasy schema" width="600" class="resi">
+            <img src="assets/extasy_arch_coarse.png" alt="entk schema" width="600" class="resi">
+            <p> Figure 2: left: The iterative execution steps in ExTASY framework. right: The software backed of ExTASY shown ensures at the same time great scaling performance and a simple frontend interface. The modular frontend of ExTASY allows to implement different complex workflows such as adaptive sampling in a easy maintainable way. Figures from [Hruska et al., 2020]. </p>
+          </figure>
+    <p>
+    The development of the ExTASY framework with collaborators is shown in two papers. The ExTASY (Extensible Toolkit for Advanced Sampling and analYsis) framework simplifies the execution of adaptive sampling on HPC since it's modular and python based. The first paper [Balasubramanian et al., 2016] titled “ExTASY: Scalable and Flexible Coupling of MD Simulations and Advanced Sampling Techniques” introduces the ExTASY framework. It showed that different sampling strategies can be easily executed with the same framework, by utilizing Python-based “templated scripts” that interface to an interoperable and high-performance pilot-based run time system. The easy setup for different HPC systems was shown on three different supercomputers: ARCHER, Blue Waters, and Stampede. ExTASY showed good scaling up to 1000s of molecular dynamics simulations. Figure 2 left shows the iterative workflow central to adaptive sampling. The analysis step automatically analyses the previously generated trajectories and determines protein conformations for starting new molecular dynamics trajectories in the next iteration. Figure 3 right shows that ExTASY's inherent modularity of the framework allows simplifying the complex workflow by encapsulating the complexity in different software layers. This allows to swap out the molecular dynamics packages or the particular sampling methods with little changes.
+    </p>
+
+
+    <figure align="center" class="cent">
+            <img src="assets/plot_reana_52_1FME_cmicro_ds-free-energy-TICA2-overlap_mod4_2.png" alt="free energy landscape" width="600" class="resi">
+            <p> Figure 3: Adaptive sampling with ExTASY (black diagonal lines) explores the same areas of the protein folding landscape as plain molecular dynamics (colored background). This result shows that adaptive sampling reaches accurate results and explores the whole protein energy landscape [Hruska et al., 2020]. </p>
+          </figure>
+
+          <figure align="center" class="cent">
+            <img src="assets/plot_reana_48_1FME_cmicro_ds_pop_fraction2_2_mod2.png" alt="adaptive sampling" width="600" class="resi">
+            <img src="assets/plot_reana_48_CLN025_cmicro_ds_rel_ent_fold_4_mod2.png" alt="entk schema" width="600" class="resi">
+            <p> Figure 4: left: ExTASY explores the protein Villin about one magnitude faster than reference plain molecular dynamics simulations. right: Adaptive sampling (red) is an order of magnitude faster to reach the same accuracy of protein dynamics than plain molecular dynamics (blue). The protein dynamics accuracy is measured by relative entropy between the reference data and the simulated data. Figures from [Hruska et al., 2020] </p>
+          </figure>
+
+
+    <p>
+      The second paper [Hruska et al., 2019] titled “Extensible and Scalable Adaptive Sampling on Supercomputers” shows on the example of three small, but realistic, proteins the advantages of the ExTASY framework. Figure 4 shows that the protein energy landscape and the protein dynamics were accurately recovered. The black diagonal lines representing the areas explored by ExTASY match the reference results shown in color. The adaptive sampling started with an unfolded state and was able to find the folded state shown. The speed up to explore the protein is shown in Figure 4 left. The red line shows the adaptive sampling is about one order faster than the plain molecular dynamics reference. To compare the accuracy of the protein dynamics the Markov state model relative entropy between the adaptive sampling data and the reference data is shown in Figure 4 right. A description of Markov state model relative entropy is in [Hruska et al., 2019]. The same protein dynamics accuracy is reached with adaptive sampling about one order faster.
+    </p>
+
+
+<h1> Scalability</h1>
+          <figure align="center" class="cent">
+            <img src="assets/plot_scalingefficiency.png" alt="scaling to 2000 GPUs" width="600" class="resi">
+            <p> Figure 5: The Software framework of ExTASY allows to scale adaptive sampling to 2000+ GPUs. Figure from [Hruska et al., 2020] </p>
+          </figure>
+
+<script>
         document.addEventListener( "DOMContentLoaded", function(){
             stage2 = new NGL.Stage( "viewport2" );
 
@@ -96,87 +181,13 @@
 
         } );
     </script>
-  </head>
-
-<body>
-
-    <div class="navbar">
-      <a href="index.html" >About me</a>
-      <a href="papers.html">Papers</a>
-      <a href="research.html" class="active">Research</a>
-      <a href="awards.html">Awards</a>
-      <a href="cv.html"> <i class="fa fa-file-word-o"></i> CV</a>
-    </div>
-
-    <div class="sidebar" id="rm">
-      <!--<img src="https://plchldr.co/i/150x150" alt="plchldr.co" class="rounded">-->
-      <img id="portrait" src="assets/profile.jpg"  alt="profile" width="150" class="rounded">
-      <p class="bold"> <h1>Eugen Hruska</h1></p>
-      <p class="small">Postdoctoral Fellow
-        <span>Leveraging Physics and Machine Learning to understand the behavior of proteins</span></p>
-      <p><a href="https://scholar.google.com/citations?user=Rq6m2UIAAAAJ"> <i class="fa fa-mortar-board"></i>&nbsp;Google Scholar</a></p>
-      <p><a href="https://github.com/euhruska"> <i class="fa fa-lg fa-github"></i>  &nbsp;Github</a></p>
-      <p><a href="https://www.linkedin.com/in/eugen-hruska/"> <i class="fa fa-lg fa-linkedin"></i> &nbsp;LinkedIn</a></p>
-      <p><a href="https://twitter.com/HruskaEugen"> <i class="fa fa-fw fa-twitter"></i>&nbsp;Twitter</a></p>
-      <p><a href="https://flgroup.emorychem.science/people/"> <i class="fa fa-institution"></i> &nbsp;Emory University</a></p>
-      <p><a href="https://www.google.com/maps/place/Emory+University/@33.7971412,-84.324434,17z/data=!3m1!4b1!4m5!3m4!1s0x88f506f7808a4f1d:0x58d57a6237dd9c55!8m2!3d33.7971368!4d-84.32224">&nbsp;<i class="fa fa-map-marker"></i> &nbsp;&nbsp;Atlanta, GA</a></p>
-    </div>
-  
-         <div class="main"  id="rmmain">
-          <br>
-          <h1> Visualization of a protein</h1>
+<h1> Visualization of a protein</h1>
           <figure align="center" class="cent2">
             <div id="viewport2"  class="resi4"></div>
-<p> <small> Drag the protein around to see details. Protein A3D is one of the proteins investigated in my work. PDB: 2A3D <button id="toggleLicorice2">side-chains on/off</button><button id="toggleSpin2">spin on/off</button>
+        <p> <small> Drag the protein around to see details. Protein A3D is one of the proteins investigated in my work. PDB: 2A3D <button id="toggleLicorice2">side-chains on/off</button><button id="toggleSpin2">spin on/off</button>
         </small></p>
-      </figure>
-          <h1> Investigation of Adaptive Sampling of Proteins</h1>
- <p>
+       </figure>
 
-In my paper [Hruska et al., 2018] titled “Quantitative Comparison of Adaptive Sampling Methods for Protein Dynamics,” I showed a systematic evaluation of selected adaptive sampling strategies. It allowed me to predict not only the speed up with adaptive sampling for a particular protein but also the scalability and the optimal adaptive sampling strategy for a particular protein and particular goal. The investigated 8 proteins in Figure 1 left are relatively fast-folding due to limited reference data. To obtain acceptable statistics I converted the reference trajectories into Markov State model. By generating Markov chains I could simulate adaptive sampling and compare different adaptive sampling strategies. The results in [Hruska et al., 2018] show that for protein folding macro-state based strategies like $1/C_{M,2}^{K}$ are the best choice from the investigated strategies. The macro-state strategy determines metastable regions and distribute new restarting points according to the statistics of different metastable regions, details in the paper. For general protein landscape exploration, micro-state based adaptive sampling strategies like $\frac{1}{C}$ are better.
-
-For the first time, I gave a theoretical upper limit for the speed up possible with adaptive sampling in Figure 1 left with the strategy $t_{opt}$. The maximum possible speed up increases for slower folding proteins, showing that for more complex proteins or larger transition barriers the adaptive sampling shows larger advantages. The scaling in Figure 1 right shows that all adaptive sampling strategies scale well parallelization. Only at parallelizations above 1000 the speed up plateaus.
- </p>
-
-
-<figure align="center" class="cent">
-        <img src="assets/Figure5a.png" alt="adaptive sampling scaling" width="600" class="resi">
-        <img src="assets/Figure4a.png" alt="adaptive sampling scaling2" width="600" class="resi">
-        <p> left: Theoretical maximum speed up for individual proteins. The x-axis is folding time of the proteins. It shows a roughly linear increase of speed up with folding time. right: Scaling of the time to solution of folding the protein for 5 different strategies. Higher parallelization reduces the time to solution for all strategies. molecular dynamics is plain molecular dynamics. $t_{opt}$ and $p_{esc}$ are theoretical best strategies to explore the protein or fold the protein. $\frac{1}{C}$ and $1/C_{M,2}^{K}$ are two different adaptive sampling strategies.  Details in [Hruska et al., 2018]. </p>
-      </figure>
-<p>
-  There is an significant opportunity to improve the currently available adaptive sampling strategies. One challenge is how to increase the speed up reachable with adaptive sampling closer to the theoretical upper limit. Another challenge is developing adaptive sampling strategies which are optimized for different goals. Currently, only the exploration or the folding of the protein are optimized. Novel ways of extracting relevant information from raw data are of interest to develop new adaptive sampling strategies.
-</p>
-
-     <h1> Software development for adaptive sampling</h1>
-
-
-
-    <figure align="center" class="cent">
-            <img src="assets/schema1.png" alt="extasy schema" width="600" class="resi">
-            <img src="assets/extasy_arch_coarse.png" alt="entk schema" width="600" class="resi">
-            <p> Figure 2: left: The iterative execution steps in ExTASY framework. right: The software backed of ExTASY shown ensures at the same time great scaling performance and a simple frontend interface. The modular frontend of ExTASY allows to implement different complex workflows such as adaptive sampling in a easy maintainable way. Figures from [Hruska et al., 2019]. </p>
-          </figure>
-    <p>
-    The development of the ExTASY framework with collaborators is shown in two papers. The ExTASY (Extensible Toolkit for Advanced Sampling and analYsis) framework simplifies the execution of adaptive sampling on HPC since it's modular and python based. The first paper [Balasubramanian et al., 2016] titled “ExTASY: Scalable and Flexible Coupling of MD Simulations and Advanced Sampling Techniques” introduces the ExTASY framework. It showed that different sampling strategies can be easily executed with the same framework, by utilizing Python-based “templated scripts” that interface to an interoperable and high-performance pilot-based run time system. The easy setup for different HPC systems was shown on three different supercomputers: ARCHER, Blue Waters, and Stampede. ExTASY showed good scaling up to 1000s of molecular dynamics simulations. Figure 2 left shows the iterative workflow central to adaptive sampling. The analysis step automatically analyses the previously generated trajectories and determines protein conformations for starting new molecular dynamics trajectories in the next iteration. Figure 3 right shows that ExTASY's inherent modularity of the framework allows simplifying the complex workflow by encapsulating the complexity in different software layers. This allows to swap out the molecular dynamics packages or the particular sampling methods with little changes.
-    </p>
-
-
-    <figure align="center" class="cent">
-            <img src="assets/plot_reana_52_1FME_cmicro_ds-free-energy-TICA2-overlap_mod4_2.png" alt="free energy landscape" width="600" class="resi">
-            <p> Figure 3: Adaptive sampling with ExTASY (black diagonal lines) explores the same areas of the protein folding landscape as plain molecular dynamics (colored background). This result shows that adaptive sampling reaches accurate results and explores the whole protein energy landscape [Hruska et al., 2019]. </p>
-          </figure>
-
-          <figure align="center" class="cent">
-            <img src="assets/plot_reana_48_1FME_cmicro_ds_pop_fraction2_2_mod2.png" alt="adaptive sampling" width="600" class="resi">
-            <img src="assets/plot_reana_48_CLN025_cmicro_ds_rel_ent_fold_4_mod2.png" alt="entk schema" width="600" class="resi">
-            <p> Figure 4: left: ExTASY explores the protein Villin about one magnitude faster than reference plain molecular dynamics simulations. right: Adaptive sampling (red) is an order of magnitude faster to reach the same accuracy of protein dynamics than plain molecular dynamics (blue). The protein dynamics accuracy is measured by relative entropy between the reference data and the simulated data. Figures from [Hruska et al., 2019] </p>
-          </figure>
-
-
-    <p>
-      The second paper [Hruska et al., 2019] titled “Extensible and Scalable Adaptive Sampling on Supercomputers” shows on the example of three small, but realistic, proteins the advantages of the ExTASY framework. Figure 4 shows that the protein energy landscape and the protein dynamics were accurately recovered. The black diagonal lines representing the areas explored by ExTASY match the reference results shown in color. The adaptive sampling started with an unfolded state and was able to find the folded state shown. The speed up to explore the protein is shown in Figure 4 left. The red line shows the adaptive sampling is about one order faster than the plain molecular dynamics reference. To compare the accuracy of the protein dynamics the Markov state model relative entropy between the adaptive sampling data and the reference data is shown in Figure 4 right. A description of Markov state model relative entropy is in [Hruska et al., 2019]. The same protein dynamics accuracy is reached with adaptive sampling about one order faster.
-    </p>
 
     </div>
  
@@ -187,7 +198,8 @@ For the first time, I gave a theoretical upper limit for the speed up possible w
 
 
       
-  </body>
+ 
 
 
+     </body>
 </html>
