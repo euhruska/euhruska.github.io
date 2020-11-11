@@ -52,7 +52,51 @@
     </script>
     <script src="data/ngl.js"></script>
    
-    
+    <script>
+        document.addEventListener( "DOMContentLoaded", function(){
+            stage2 = new NGL.Stage( "viewport2" );
+
+            stage2.loadFile( "data/2a3d.pdb", { defaultRepresentation: true, asTrajectory: true } ).then( function( comp2 ){
+              comp2.setName( "simulation-name2" );
+              comp2.setSelection( "protein and not _h" );
+              comp2.addRepresentation( "licorice", {visible: false} );
+              comp2.setPosition([-50, 0, -10]);
+              comp2.setScale(1.5);
+              trajComp2 = comp2.addTrajectory( );
+            player2 = new NGL.TrajectoryPlayer(trajComp2.trajectory, {start: 1, timeout: 200} );
+            stage2.getRepresentationsByName( "licorice" ).list.forEach( function( repre ){
+                  repre.setVisibility( !repre.visible );
+              } );
+            
+             
+
+          } );
+          stage2.setParameters( { backgroundColor: "white" } );
+          stage2.setSpin( [ 0, 1, 0 ], 0.01 );
+
+
+              var toggleLicorice2 = document.getElementById( "toggleLicorice2" );
+            toggleLicorice2.addEventListener( "click", function(){
+              stage2.getRepresentationsByName( "licorice" ).list.forEach( function( repre2 ){
+                  repre2.setVisibility( !repre2.visible );
+              } );
+            } );
+
+            var toggleSpin = document.getElementById( "toggleSpin2" );
+            var isSpinning = true;
+            toggleSpin.addEventListener( "click", function(){
+                if( !isSpinning ){
+                    stage2.setSpin( [ 0, 1, 0 ], 0.01 );
+                    isSpinning = true;
+                }else{
+                    stage2.setSpin( null, null );
+                    isSpinning = false;
+                }
+            } );
+
+        } );
+    </script>
+
   </head>
 
 <body>
@@ -70,7 +114,7 @@
       <img id="portrait" src="assets/profile.jpg"  alt="profile" width="150" class="rounded">
       <p class="bold"> <h1>Eugen Hruska</h1></p>
       <p class="small"><b>Postdoctoral Fellow</b></p>
-        <p>Leveraging Physics and Machine Learning to understand the behavior of proteins</p>
+        <p>Leveraging Physics and Machine Learning to understand the behavior of molecules</p>
       <p><a href="https://scholar.google.com/citations?user=Rq6m2UIAAAAJ"> <i class="fa fa-mortar-board"></i>&nbsp;Google Scholar</a></p>
       <p><a href="https://github.com/euhruska"> <i class="fa fa-lg fa-github"></i>  &nbsp;Github</a></p>
       <p><a href="https://www.linkedin.com/in/eugen-hruska/"> <i class="fa fa-lg fa-linkedin"></i> &nbsp;LinkedIn</a></p>
@@ -81,7 +125,12 @@
   
          <div class="main"  id="rmmain">
           <br>
-          
+          <h1> Visualization of a protein</h1>
+          <figure align="center" class="cent2">
+            <div id="viewport2"  class="resi4"></div>
+        <p> <small> Drag the protein around to see details. Protein A3D is one of the proteins investigated in my work. PDB: 2A3D <button id="toggleLicorice2">side-chains on/off</button><button id="toggleSpin2">spin on/off</button>
+        </small></p>
+       </figure>
           <h1> Investigation of Adaptive Sampling of Proteins</h1>
  <p>
 
@@ -137,56 +186,7 @@ For the first time, I gave a theoretical upper limit for the speed up possible w
             <p> Figure 5: The Software framework of ExTASY allows to scale adaptive sampling to 2000+ GPUs. Figure from [Hruska et al., 2020] </p>
           </figure>
 
-<script>
-        document.addEventListener( "DOMContentLoaded", function(){
-            stage2 = new NGL.Stage( "viewport2" );
 
-            stage2.loadFile( "data/2a3d.pdb", { defaultRepresentation: true, asTrajectory: true } ).then( function( comp2 ){
-              comp2.setName( "simulation-name2" );
-              comp2.setSelection( "protein and not _h" );
-              comp2.addRepresentation( "licorice", {visible: false} );
-              comp2.setPosition([-50, 0, -10]);
-              comp2.setScale(1.5);
-              trajComp2 = comp2.addTrajectory( );
-            player2 = new NGL.TrajectoryPlayer(trajComp2.trajectory, {start: 1, timeout: 200} );
-            stage2.getRepresentationsByName( "licorice" ).list.forEach( function( repre ){
-                  repre.setVisibility( !repre.visible );
-              } );
-            
-             
-
-          } );
-          stage2.setParameters( { backgroundColor: "white" } );
-          stage2.setSpin( [ 0, 1, 0 ], 0.01 );
-
-
-              var toggleLicorice2 = document.getElementById( "toggleLicorice2" );
-            toggleLicorice2.addEventListener( "click", function(){
-              stage2.getRepresentationsByName( "licorice" ).list.forEach( function( repre2 ){
-                  repre2.setVisibility( !repre2.visible );
-              } );
-            } );
-
-            var toggleSpin = document.getElementById( "toggleSpin2" );
-            var isSpinning = true;
-            toggleSpin.addEventListener( "click", function(){
-                if( !isSpinning ){
-                    stage2.setSpin( [ 0, 1, 0 ], 0.01 );
-                    isSpinning = true;
-                }else{
-                    stage2.setSpin( null, null );
-                    isSpinning = false;
-                }
-            } );
-
-        } );
-    </script>
-<h1> Visualization of a protein</h1>
-          <figure align="center" class="cent2">
-            <div id="viewport2"  class="resi4"></div>
-        <p> <small> Drag the protein around to see details. Protein A3D is one of the proteins investigated in my work. PDB: 2A3D <button id="toggleLicorice2">side-chains on/off</button><button id="toggleSpin2">spin on/off</button>
-        </small></p>
-       </figure>
 
 
     </div>
